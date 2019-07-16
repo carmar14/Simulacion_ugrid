@@ -1,2 +1,2 @@
-# Simulacion_ugrid
- Simulacion en alto detalle tesis
+# uGrid_Hdetail
+ Simulación en alto detalle de la microgrid
