@@ -179,6 +179,10 @@ load('DMC_matrices2');
 load('modeloElectrico');
 load('modeloDiesel_dotros')
 
+ssCl=[1 0 0 0 0
+      0 1 0 0 0
+      0 0 1 0 0
+      0 0 0 0 1];
 sys=ss(ssAl,ssBl,ssCl,[]);
 sysd=c2d(sys,1e-4);
 Ad=sysd.A;
@@ -191,3 +195,13 @@ Ld=place(Ad',Cd',pod);
 % step(sys)
 % hold on
 % step(sysd)
+
+
+
+%Matrices para el diseño del observador de Luenberger
+% Ad=ssAl;
+% Bd=ssBl;
+% Cd=ssCl;
+tm=1e-4;
+% Ld=L';
+
