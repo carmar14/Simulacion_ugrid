@@ -204,4 +204,7 @@ Ld=place(Ad',Cd',pod);
 % Cd=ssCl;
 tm=1e-4;
 % Ld=L';
+load('datos_deteccion.mat');
+tiempo=0:tm:(length(det)-1)*tm;
+tiempo=tiempo';
 
