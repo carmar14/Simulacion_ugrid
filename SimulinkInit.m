@@ -209,3 +209,18 @@ load('norm_with_attack.mat');
 tiempo=0:tm:(length(det)-1)*tm;
 tiempo=tiempo';
 
+%UIO1 para el ataque del sensor 1 eliminamos esa fila de la matriz C
+
+Fd1=[1;1.0e-4;1.0e-4;1.0e-4;1.0e-4];
+C1=Cd(1,:);
+Fd2=[1.0e-4;1;1.0e-4;1.0e-4;1.0e-4];
+C2=Cd(2,:);
+Fd3=[1.0e-4;1.0e-4;1;1.0e-4;1.0e-4];
+C3=Cd(3,:);
+Fd4=[1.0e-4;1.0e-4;1.0e-4;1.0e-4;1];
+C4=Cd(4,:);
+
+[F1,T1,K1U,H1]=uio_linear (Ad,Bd,C1,Fd1);
+[F2,T2,K2U,H2]=uio_linear (Ad,Bd,C2,Fd2);
+[F3,T3,K3U,H3]=uio_linear (Ad,Bd,C3,Fd3);
+[F4,T4,K4U,H4]=uio_linear (Ad,Bd,C4,Fd4);

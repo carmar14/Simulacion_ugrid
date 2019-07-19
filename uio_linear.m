@@ -67,11 +67,11 @@ A1=T*A;
 % end
 [ABAR,BBAR,CBAR,TOM,KnO] = obsvf(A1,B,C); % If it is necessary
 P = TOM; % similarity transformation 
-Ao = ABAR(3,3);
-Cstar = CBAR(1,3);
+Ao = ABAR(5,5);
+Cstar = CBAR(1,5);
 pd = 0.001;
 Kpsp2 = (Ao - pd)/Cstar;
-K1 = inv(P)*[1  1 Kpsp2]';
+K1 = inv(P)*[1 1 1 1 Kpsp2]';
 % pole=eig(A1); 
 % K1=place(A',C',[0.9* pole]) ; 
 % K1=K1';
