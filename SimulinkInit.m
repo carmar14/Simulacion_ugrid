@@ -206,18 +206,36 @@ tm=1e-4;
 % Ld=L';
 load('datos_deteccion.mat');
 load('norm_with_attack.mat');
+% load('datos_in_out.mat');
+load('datos_in_out_good_well.mat')
+% load('datos_in_out_good.mat')
+
+%Entradas
+u1=u_fs(:,1);
+u2=u_fs(:,2);
+u3=u_fs(:,3);
+%Salidas
+I1=y_ma(:,1);
+I2=y_ma(:,2);
+I3=y_ma(:,3);
+V_load=y_ma(:,4);
+
 tiempo=0:tm:(length(det)-1)*tm;
 tiempo=tiempo';
 
 %UIO1 para el ataque del sensor 1 eliminamos esa fila de la matriz C
 
 Fd1=[1;1.0e-4;1.0e-4;1.0e-4;1.0e-4];
+% C1=Cd(2:end,:);
 C1=Cd(1,:);
 Fd2=[1.0e-4;1;1.0e-4;1.0e-4;1.0e-4];
+% C2=[ Cd(1,:);Cd(3:end,:)];
 C2=Cd(2,:);
 Fd3=[1.0e-4;1.0e-4;1;1.0e-4;1.0e-4];
+% C3=[Cd(1:2,:);Cd(end,:)];
 C3=Cd(3,:);
 Fd4=[1.0e-4;1.0e-4;1.0e-4;1.0e-4;1];
+% C4=Cd(1:end-1,:);
 C4=Cd(4,:);
 
 [F1,T1,K1U,H1]=uio_linear (Ad,Bd,C1,Fd1);
