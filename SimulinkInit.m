@@ -207,8 +207,8 @@ tm=1e-4;
 load('datos_deteccion.mat');
 load('norm_with_attack.mat');
 % load('datos_in_out.mat');
-load('datos_in_out_good_well.mat')
-% load('datos_in_out_good.mat')
+% load('datos_in_out_good_well.mat')
+load('datos_in_out_good.mat')
 
 %Entradas
 u1=u_fs(:,1);
