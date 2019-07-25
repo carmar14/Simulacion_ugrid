@@ -56,25 +56,34 @@ end
 % 2 ) Compute H, T, and A1
 nb_A=size(A); 
 H=Fd*inv((C*Fd)'*(C*Fd))*(C*Fd)';
-T=eye(nb_A(1))-(H*C) ; 
+T=eye(nb_A(1))-(H*C) ;  
 A1=T*A;
 % 3 ) Check the observability : If (C, A1) observable ,
 % a UIO exits and K1 can be computed us ing pole
 % placement
-% if (rank(obsv(A1,C)) ~= nb_A(1) ) 
-% error('(C,A1) should be observable') 
+o=0;
+if (rank(obsv(A1,C)) ~= nb_A(1) ) 
+display('(C,A1) should be observable') 
 % return ,
-% end
-[ABAR,BBAR,CBAR,TOM,KnO] = obsvf(A1,B,C); % If it is necessary
-P = TOM; % similarity transformation 
-Ao = ABAR(5,5);
-Cstar = CBAR(1,5);
-pd = 0.001;
-Kpsp2 = (Ao - pd)/Cstar;
-K1 = inv(P)*[1 1 1 1 Kpsp2]';
-% pole=eig(A1); 
-% K1=place(A',C',[0.9* pole]) ; 
-% K1=K1';
+o=1;
+end
+
+if o==1
+    [ABAR,BBAR,CBAR,TOM,KnO] = obsvf(A1,B,C); % If it is necessary
+    P = TOM; % similarity transformation 
+    Ao = ABAR(5,5);
+    Cstar = CBAR(1,5);
+    pd = 0.001;%0.001;
+    Kpsp2 = (Ao - pd)/Cstar;
+    K1 = inv(P)*[1 1 1 1 Kpsp2]';
+else
+    
+%     K1 = inv(P)*[1 1 1 1 Kpsp2;1 1 1 1 Kpsp2;1 1 1 1 Kpsp2]';
+
+    pole=eig(A1); 
+    K1=place(A',C',[0.9* pole]) ; 
+    K1=K1';
+end
 % 4 ) Compute E, K to b u i l t the f o l l owi n g UIO
 E=A1-K1*C; 
 K=K1+E*H;

@@ -205,10 +205,10 @@ Ld=place(Ad',Cd',pod);
 tm=1e-4;
 % Ld=L';
 load('datos_deteccion.mat');
-load('norm_with_attack.mat');
+% load('norm_with_attack.mat');
 % load('datos_in_out.mat');
-% load('datos_in_out_good_well.mat')
-load('datos_in_out_good.mat')
+load('datos_in_out_good_well.mat')   %ATAQUES
+% load('datos_in_out_good.mat')  %NORMALES
 
 %Entradas
 u1=u_fs(:,1);
@@ -225,20 +225,61 @@ tiempo=tiempo';
 
 %UIO1 para el ataque del sensor 1 eliminamos esa fila de la matriz C
 
-Fd1=[1;1.0e-4;1.0e-4;1.0e-4;1.0e-4];
+Fd1=[1e-4;1.0;1.0e-4;1.0e-4;1.0e-4];
+% Fd1=[1.0e-4;1;1;1;1];
 % C1=Cd(2:end,:);
-C1=Cd(1,:);
-Fd2=[1.0e-4;1;1.0e-4;1.0e-4;1.0e-4];
+% C1=Cd(1,:);
+C1=Cd(2,:);
+Fd2=[1.0e-4;1e-4;1;1.0e-4;1.0e-4];
+% Fd2=[1; 1.0e-4;1;1;1];
 % C2=[ Cd(1,:);Cd(3:end,:)];
-C2=Cd(2,:);
-Fd3=[1.0e-4;1.0e-4;1;1.0e-4;1.0e-4];
+% C2=Cd(2,:);
+C2=Cd(3,:);
+Fd3=[1.0e-4;1.0e-4;1e-4;1.0e-4;1];
+% Fd3=[1; 1;1.0e-4;1;1];
 % C3=[Cd(1:2,:);Cd(end,:)];
-C3=Cd(3,:);
-Fd4=[1.0e-4;1.0e-4;1.0e-4;1.0e-4;1];
-% C4=Cd(1:end-1,:);
-C4=Cd(4,:);
+% C3=Cd(3,:);
+C3=Cd(4,:);
+% Fd4=[1.0e-4;1.0e-4;1.0e-4;1.0e-4;1];
 
+
+%UIO2 para el ataque del sensor 2 eliminamos esa fila de la matriz C
+Fd4=[1;1e-4;1e-4;1e-4;1e-4];
+C4=Cd(1,:);
+Fd5=[1e-4;1e-4;1;1e-4;1e-4];
+C5=Cd(3,:);
+Fd6=[1e-4;1e-4;1e-4;1e-4;1];
+C6=Cd(4,:);
+
+%UIO3 para el ataque del sensor 3 eliminamos esa fila de la matriz C
+Fd7=[1;1e-4;1e-4;1e-4;1e-4];
+C7=Cd(1,:);
+Fd8=[1e-4;1;1e-4;1e-4;1e-4];
+C8=Cd(2,:);
+Fd9=[1e-4;1e-4;1e-4;1e-4;1];
+C9=Cd(4,:);
+
+%UIO4 para el ataque del sensor 4 eliminamos esa fila de la matriz C
+Fd10=[1;1e-4;1e-4;1e-4;1e-4];
+C10=Cd(1,:);
+Fd11=[1e-4;1;1e-4;1e-4;1e-4];
+C11=Cd(2,:);
+Fd12=[1e-4;1e-4;1;1e-4;1e-4];
+C12=Cd(3,:);
+
+% UIO para medida 1
 [F1,T1,K1U,H1]=uio_linear (Ad,Bd,C1,Fd1);
 [F2,T2,K2U,H2]=uio_linear (Ad,Bd,C2,Fd2);
 [F3,T3,K3U,H3]=uio_linear (Ad,Bd,C3,Fd3);
+% UIO para medida 2
 [F4,T4,K4U,H4]=uio_linear (Ad,Bd,C4,Fd4);
+[F5,T5,K5U,H5]=uio_linear (Ad,Bd,C5,Fd5);
+[F6,T6,K6U,H6]=uio_linear (Ad,Bd,C6,Fd6);
+% UIO para medida 3
+[F7,T7,K7U,H7]=uio_linear (Ad,Bd,C7,Fd7);
+[F8,T8,K8U,H8]=uio_linear (Ad,Bd,C8,Fd8);
+[F9,T9,K9U,H9]=uio_linear (Ad,Bd,C9,Fd9);
+% UIO para medida 4
+[F10,T10,K10U,H10]=uio_linear (Ad,Bd,C10,Fd10);
+[F11,T11,K11U,H11]=uio_linear (Ad,Bd,C11,Fd11);
+[F12,T12,K12U,H12]=uio_linear (Ad,Bd,C12,Fd12);
