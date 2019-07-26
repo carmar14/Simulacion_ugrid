@@ -82,6 +82,7 @@ else
 
     pole=eig(A1); 
     K1=place(A',C',[0.9* pole]) ; 
+%     K1=acker(A',C',[0.999* pole]) ; 
     K1=K1';
 end
 % 4 ) Compute E, K to b u i l t the f o l l owi n g UIO

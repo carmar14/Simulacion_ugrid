@@ -208,8 +208,8 @@ Ld=place(Ad',Cd',pod);
 load('datos_deteccion.mat');
 % load('norm_with_attack.mat');
 % load('datos_in_out.mat');
-load('datos_in_out_good_well.mat')   %ATAQUES
-% load('datos_in_out_good.mat')  %NORMALES
+% load('datos_in_out_good_well.mat')   %ATAQUES
+load('datos_in_out_good.mat')  %NORMALES
 
 %Entradas
 u1=u_fs(:,1);
@@ -245,20 +245,19 @@ C3=Cd(4,:);
 
 % Fd=eye(4);
 %Otra posibilidad
-% Fd1=[1.0e-4;1;1;1;1];
-% C1=Cd(2:end,:);   %Sin la entrada de de i1
-% Fd2=[1;1.0e-4;1;1;1];
-% C2=[ Cd(1,:);Cd(3:end,:)]; %Sin la entrada de de i2
-% Fd3=[1;1;1.0e-4;1;1];
-% C3=[Cd(1:2,:);Cd(end,:)]; %Sin la entrada de de i3
-% Fd4=[1;1;1;1;1e-4];
-% C4=Cd(1,:);
-% C4=Cd(1:end-1,:); %Sin la entrada de de tension en la carga
+Fd1=[eye(3);%[1.0e-4;1;1;1;1];
+C1=Cd(2:end,:);   %Sin la entrada de de i1
+Fd2=eye(3);%[1; 1.0e-4;1;1;1];
+C2=[ Cd(1,:);Cd(3:end,:)]; %Sin la entrada de de i2
+Fd3=eye(3);%[1; 1;1.0e-4;1;1];
+C3=[Cd(1:2,:);Cd(end,:)]; %Sin la entrada de de i3
+Fd4=eye(3);%[1;1;1;1;1e-4];
+C4=Cd(1:end-1,:); %Sin la entrada de de tension en la carga
 
 
 %UIO2 para el ataque del sensor 2 eliminamos esa fila de la matriz C
-Fd4=[1;1e-4;1e-4;1e-4;1e-4];
-C4=Cd(1,:);
+% Fd4=[1;1e-4;1e-4;1e-4;1e-4];
+% C4=Cd(1,:);
 Fd5=[1e-4;1e-4;1;1e-4;1e-4];
 C5=Cd(3,:);
 Fd6=[1e-4;1e-4;1e-4;1e-4;1];
