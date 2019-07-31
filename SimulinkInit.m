@@ -296,3 +296,5 @@ C12=Cd(3,:);
 [F10,T10,K10U,H10]=uio_linear (Ad,Bd,C10,Fd10);
 [F11,T11,K11U,H11]=uio_linear (Ad,Bd,C11,Fd11);
 [F12,T12,K12U,H12]=uio_linear (Ad,Bd,C12,Fd12);
+
+clc
