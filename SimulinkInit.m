@@ -297,4 +297,13 @@ C12=Cd(3,:);
 [F11,T11,K11U,H11]=uio_linear (Ad,Bd,C11,Fd11);
 [F12,T12,K12U,H12]=uio_linear (Ad,Bd,C12,Fd12);
 
+load('dr.mat')
+dr1(1,:)=dr.signals.values(:,1,:);
+dr2(1,:)=dr.signals.values(:,2,:);
+dr3(1,:)=dr.signals.values(:,3,:);
+dr4(1,:)=dr.signals.values(:,4,:);
+tiempo_s=dr.time;
+dr=[dr1; dr2; dr3; dr4];
+
+
 clc
