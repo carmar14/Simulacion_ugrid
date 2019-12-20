@@ -8,7 +8,7 @@ close all
 clc
 % se cargan las matrices dinamicas del MPC DMC.
 load('DMC_matrices');
-load('FitData')
+load('FitData');
 
 % se carga la libreria de true time.
 run('truetime-2.0\init_truetime');
@@ -324,11 +324,11 @@ wref=70000;%70000;
 K=25;
 K11=0.8;
 K22=0.2;
-T1=0.4;
-T2=1;
-T3=15;
-T4=2.5;
-T5=3.3;
+T1s=0.4;
+T2s=1;
+T3s=15;
+T4s=2.5;
+T5s=3.3;
 Tt=450;
 Kv=1;
 Tv=0.05;
